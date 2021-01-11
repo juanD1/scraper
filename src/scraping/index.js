@@ -1,5 +1,11 @@
 const puppeteer = require("puppeteer");
-const { getName, getPrice, getQuantity, getImg } = require("./utils");
+const {
+  getName,
+  getPrice,
+  getQuantity,
+  getImg,
+  getIsAvailable,
+} = require("./utils");
 
 async function configureBrowser(url) {
   const browser = await puppeteer.launch();
@@ -13,9 +19,10 @@ async function getProductInfo(page) {
   const price = await getPrice(page);
   const quantity = await getQuantity(page);
   const img = await getImg(page);
+  const isAvailable = getIsAvailable(price, quantity);
   // const isFreeShipping = await getIsFreeShipping(page);
 
-  return { name, price, quantity, img };
+  return { name, price, quantity, img, isAvailable };
 }
 
 async function startTracking(url) {

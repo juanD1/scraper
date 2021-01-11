@@ -20,10 +20,9 @@ async function getPrice(page) {
 }
 
 async function getQuantity(page) {
-  // TODO: validate and crop url
   const quantity = await page.evaluate(() => {
     const element = document.getElementById("quantity");
-    const quantity = element ? element.options.length : 0;
+    const quantity = element ? element.options.length : undefined;
     return quantity;
   });
   return quantity;
@@ -38,6 +37,11 @@ async function getImg(page) {
   return img;
 }
 
+function getIsAvailable(price, quantity) {
+  if (price && quantity) return true;
+  return false;
+}
+
 // async function getIsFreeShipping(page) {
 //   const isFreeShipping = await page.evaluate(() => {
 //     const element = document.querySelectorAll(
@@ -49,4 +53,4 @@ async function getImg(page) {
 //   return isFreeShipping;
 // }
 
-module.exports = { getName, getPrice, getQuantity, getImg };
+module.exports = { getName, getPrice, getQuantity, getImg, getIsAvailable };
