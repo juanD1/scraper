@@ -58,17 +58,6 @@ async function getAllImages(page) {
   return allImages;
 }
 
-// async function getIsFreeShipping(page) {
-//   const isFreeShipping = await page.evaluate(() => {
-//     const element = document.querySelectorAll(
-//       "#exports_desktop_qualifiedBuybox_tlc_feature_div span"
-//     )[0];
-//     const isFreeShipping = element.innerText.includes("GRATIS");
-//     return isFreeShipping;
-//   });
-//   return isFreeShipping;
-// }
-
 module.exports = {
   getName,
   getPrice,
