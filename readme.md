@@ -1,4 +1,4 @@
-# Scraping
+# Scraper
 
 A simple API for get product info of amazon using scraping.
 
