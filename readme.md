@@ -2,6 +2,8 @@
 
 A simple API for get product info of amazon using scraping.
 
+  postman documentation: <https://documenter.getpostman.com/view/4267176/TVzUCb7A>
+
 - Type some Markdown on the left
 - See HTML in the right
 - Magic
