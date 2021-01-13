@@ -42,6 +42,22 @@ function getIsAvailable(price, quantity) {
   return false;
 }
 
+async function getAllImages(page) {
+  const allImages = await page.evaluate(() => {
+    const containerImgs = document.getElementById("altImages");
+    const arrayElementImgs = containerImgs.querySelectorAll("img");
+
+    const allImges = [];
+    for (let lement of arrayElementImgs) {
+      allImges.push(lement.currentSrc);
+    }
+    const allLinksImages = allImges.slice(1, allImges.length);
+
+    return allLinksImages;
+  });
+  return allImages;
+}
+
 // async function getIsFreeShipping(page) {
 //   const isFreeShipping = await page.evaluate(() => {
 //     const element = document.querySelectorAll(
@@ -53,4 +69,11 @@ function getIsAvailable(price, quantity) {
 //   return isFreeShipping;
 // }
 
-module.exports = { getName, getPrice, getQuantity, getImg, getIsAvailable };
+module.exports = {
+  getName,
+  getPrice,
+  getQuantity,
+  getImg,
+  getIsAvailable,
+  getAllImages,
+};

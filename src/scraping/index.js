@@ -5,6 +5,7 @@ const {
   getQuantity,
   getImg,
   getIsAvailable,
+  getAllImages,
 } = require("./utils");
 
 async function configureBrowser(url) {
@@ -19,10 +20,11 @@ async function getProductInfo(page) {
   const price = await getPrice(page);
   const quantity = await getQuantity(page);
   const img = await getImg(page);
+  const allImages = await getAllImages(page);
   const isAvailable = getIsAvailable(price, quantity);
   // const isFreeShipping = await getIsFreeShipping(page);
 
-  return { name, price, quantity, img, isAvailable };
+  return { name, price, quantity, img, allImages, isAvailable };
 }
 
 async function startTracking(url) {
